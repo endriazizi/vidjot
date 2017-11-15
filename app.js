@@ -5,6 +5,22 @@ instead of var, fat arrow, promises are Es6 sintax
 const express = require('express')
 const app = express()
 const exphbs = require('express-handlebars')
+const mongoose = require('mongoose')
+
+//to remove warning: 
+/*(node:16564) DeprecationWarning: Mongoose: mpromise (mongoose's default promise library) is deprecated, plug in your own promise library
+instead: http://mongoosejs.com/docs/promises.html */
+//Map global promise - get rid of warning
+mongoose.Promise = global.Promise;
+
+//connect to mongoose
+mongoose.connect('mongodb://localhost:27017/vidjot-dev', {useMongoClient: true})
+//promise or callback but we are using promise in the following code
+.then(()=> console.log('MongoDB Connected...'))
+.catch(err => console.log(err));
+
+
+
 
 // Handlebars Middleware
 app.engine('handlebars', exphbs({
@@ -83,5 +99,7 @@ http://exploringjs.com/es6/ch_template-literals.html
 app.listen(port, () => {
     //template string or template literal using back ticks
     console.log(`Server started at ${port}`);
-    console.log("Server started at " + port);
+    
+    
+    //console.log("Server started at " + port);
 });
