@@ -31,6 +31,9 @@ app.engine('handlebars', exphbs({
 }));
 app.set('view engine', 'handlebars');
 
+//Body parser
+const bodyParser = require('body-parser')
+
 /*How middleware works 
 http://expressjs.com/it/guide/using-middleware.html
 */
@@ -78,10 +81,13 @@ app.get('/about', (req, res) => {
 
 // Add Idea Form Route
 app.get('/ideas/add', (req, res) => {
-    //inside we define the index handlebars page for randering at that  route
-    //passing dynamic data to our view
-
     res.render('ideas/add');
+});
+
+//Process Form
+app.post('/ideas', (req, res) =>{
+    console.log(req.body);
+    res.send('ok');
 });
 
 
