@@ -5,10 +5,17 @@ instead of var, fat arrow, promises are Es6 sintax
 const express = require('express')
 const app = express()
  
+//Index Route
 app.get('/', function (req, res) {
-  res.send('Hello World')
+    res.send('Hello World')
+  })
+
+app.get('/test', (req, res) => {
+    //send something to the browser
+    res.send('TEST')
 })
 
+  
 const port = 5000
 
 //listen method
