@@ -38,6 +38,7 @@ nodemon will watch the files in the directory in which nodemon was started, and 
 where our global modules are installed locally:
     npm root -g
 
+added template handlebars engine
 http://handlebarsjs.com/
 https://github.com/ericf/express-handlebars
 
@@ -90,3 +91,9 @@ https://github.com/ericf/express-handlebars
 TIPS: this come with Emett, Visual Code comes by default with it, 
 to others ide you need to install plugin for it,
 h1 and tab to autocomplet every tag you need
+
+TIPS: using Emmit ! and tab for html template 
+
+
+BOOTSTRAP http://getbootstrap.com/docs/4.0/getting-started/introduction/
+views/main.handlebars
