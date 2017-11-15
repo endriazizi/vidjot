@@ -154,3 +154,5 @@ Example Mongoose Connection:
 TO LEARN:
 promise or callback but we are using promise in the following code
 might me related to Es6
+
+Create Model using schema
