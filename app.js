@@ -19,7 +19,10 @@ mongoose.connect('mongodb://localhost:27017/vidjot-dev', {useMongoClient: true})
 .then(()=> console.log('MongoDB Connected...'))
 .catch(err => console.log(err));
 
-
+// Load Idea Model
+require('./models/Ideas');
+//load the model into a variable
+const Idea = mongoose.model('ideas');
 
 
 // Handlebars Middleware
@@ -51,6 +54,8 @@ app.use((req, res, next) => {
 }); */
 
 //Handlebar use render for send to the browser
+
+// Home Route
 app.get('/', (req, res) => {
     //inside we define the index handlebars page for randering at that  route
     //passing dynamic data to our view
@@ -60,6 +65,7 @@ app.get('/', (req, res) => {
     });
 });
 
+// About Route
 app.get('/about', (req, res) => {
     //inside we define the index handlebars page for randering at that  route
     //passing dynamic data to our view
@@ -67,6 +73,15 @@ app.get('/about', (req, res) => {
     res.render('about', {
         title: title
     });
+});
+
+
+// Add Idea Form Route
+app.get('/ideas/add', (req, res) => {
+    //inside we define the index handlebars page for randering at that  route
+    //passing dynamic data to our view
+
+    res.render('ideas/add');
 });
 
 
