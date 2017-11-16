@@ -32,7 +32,15 @@ app.engine('handlebars', exphbs({
 app.set('view engine', 'handlebars');
 
 //Body parser
+// https://github.com/expressjs/body-parser
 const bodyParser = require('body-parser')
+
+//Body Parser Middleware
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+
+// parse application/json
+app.use(bodyParser.json())
 
 /*How middleware works 
 http://expressjs.com/it/guide/using-middleware.html
@@ -86,8 +94,31 @@ app.get('/ideas/add', (req, res) => {
 
 //Process Form
 app.post('/ideas', (req, res) =>{
-    console.log(req.body);
-    res.send('ok');
+    //we can access with bodyparser to the body when is submitted
+/*     console.log(req.body);
+    res.send('ok'); */
+    // a errors variable setted as an empty array
+    let errors = [];
+    // requests.body -> req.body is an Object with all of our form fields
+    // so we can access each one with title
+    // if there is no title then we are going to take that error's array 
+    // and we are going to push on to it an Object with text
+    if(!req.body.title){
+        //text is an object
+        errors.push({text:'Please add a title'});
+    }
+    if(!req.body.details){
+        errors.push({text:'Please add some details'});
+    }
+    if(errors.lenght > 0){
+        res.render('ideas/add', {
+            errors: errors,
+            title: req.body.title,
+            details: req.body.details
+        });
+    } else {
+        res.send('passed');
+    }
 });
 
 
