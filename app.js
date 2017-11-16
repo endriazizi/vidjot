@@ -118,6 +118,7 @@ app.post('/ideas', (req, res) =>{
         });
     } else {
         res.send('passed');
+        console.log(req.body);
     }
 });
 
