@@ -14,7 +14,9 @@ instead: http://mongoosejs.com/docs/promises.html */
 mongoose.Promise = global.Promise;
 
 //connect to mongoose
-mongoose.connect('mongodb://localhost:27017/vidjot-dev', {useMongoClient: true})
+mongoose.connect('mongodb://localhost:27017/mds', {useMongoClient: true})
+
+//mongoose.connect('mongodb://localhost:27017/vidjot-dev', {useMongoClient: true})
 //promise or callback but we are using promise in the following code
 .then(()=> console.log('MongoDB Connected...'))
 .catch(err => console.log(err));
@@ -22,7 +24,7 @@ mongoose.connect('mongodb://localhost:27017/vidjot-dev', {useMongoClient: true})
 // Load Idea Model
 require('./models/Ideas');
 //load the model into a variable
-const Idea = mongoose.model('ideas');
+const Idea = mongoose.model('vola');
 
 
 // Handlebars Middleware
@@ -125,15 +127,15 @@ app.post('/ideas', (req, res) =>{
     if(errors.lenght > 0){
         res.render('ideas/add', {
             errors: errors,
-            title: req.body.title,
-            details: req.body.details
+            title: req.body.mm,
+            details: req.body.mds_ticker
         });
     } else {
 /*         res.send('passed');
         console.log(req.body); */
         const newUser = {
-            title: req.body.title,
-            details: req.body.details
+            title: req.body.mm,
+            mds_ticker: req.body.mds_ticker
           }
           new Idea(newUser)
             .save()

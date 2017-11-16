@@ -3,11 +3,13 @@ const mongoose = require ('mongoose');
 //we create a variable Schema bringing from mongoose Schema
 const Schema = mongoose.Schema;
 
-
 //Create Schema
 const IdeaSchema = new Schema({
+
+    mds_ticker: {type: String}
+
     //title is an Object
-    title: {
+   /*  title: {
         type:String,
         required: true
     },
@@ -18,8 +20,8 @@ const IdeaSchema = new Schema({
     date: {
         type: Date,
         default: Date.now
-    }
+    } */
 });
 
 //setup our created schema
-mongoose.model('ideas',IdeaSchema);
+mongoose.model('vola',IdeaSchema);
