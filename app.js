@@ -86,6 +86,18 @@ app.get('/about', (req, res) => {
     });
 });
 
+// Idea Index Page
+app.get('/ideas', (req, res)=>{
+    Idea.find({})
+    .sort({date:'desc'})
+    //promise
+    .then(ideas =>{
+         res.render('ideas/index', {
+             ideas:ideas
+         });
+    })
+   
+});
 
 // Add Idea Form Route
 app.get('/ideas/add', (req, res) => {
@@ -117,8 +129,18 @@ app.post('/ideas', (req, res) =>{
             details: req.body.details
         });
     } else {
-        res.send('passed');
-        console.log(req.body);
+/*         res.send('passed');
+        console.log(req.body); */
+        const newUser = {
+            title: req.body.title,
+            details: req.body.details
+          }
+          new Idea(newUser)
+            .save()
+            //will return a promise
+            .then(idea => {
+              res.redirect('/ideas');
+            })
     }
 });
 
