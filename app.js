@@ -104,6 +104,30 @@ app.get('/ideas/add', (req, res) => {
     res.render('ideas/add');
 });
 
+// Edit Idea Form Route :id is a placeholder, a parameter
+app.get('/ideas/edit/:id', (req, res) => {
+    //Idea Model
+    Idea.findOne({
+        // parmas is :id passed to this route 0261291792 
+        _id: req.params.id
+    })
+    .then(idea =>{
+        res.render('ideas/edit', {
+            idea:idea
+        });
+   
+    });
+
+});
+
+
+// Edit Idea Form Route :id is a placeholder, a parameter
+app.get('/ideas/:id', (req, res) => {
+    res.send('PUT');
+
+});
+
+
 //Process Form
 app.post('/ideas', (req, res) =>{
     //we can access with bodyparser to the body when is submitted
