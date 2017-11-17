@@ -6,7 +6,7 @@ const Schema = mongoose.Schema;
 //Create Schema
 const IdeaSchema = new Schema({
 
-    mds_ticker: {type: String}
+    mds_ticker: {type: String},
 
     //title is an Object
    /*  title: {
