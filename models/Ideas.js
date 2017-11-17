@@ -6,7 +6,11 @@ const Schema = mongoose.Schema;
 //Create Schema
 const IdeaSchema = new Schema({
 
-    mds_ticker: {type: String},
+    mds_ticker: {type: String, index: true},
+    mds_ts: {type: Number, index: true},
+    m:[String],
+    t:[String]
+
 
     //title is an Object
    /*  title: {
@@ -24,4 +28,4 @@ const IdeaSchema = new Schema({
 });
 
 //setup our created schema
-mongoose.model('vola',IdeaSchema);
+mongoose.model('vola', IdeaSchema,  "vola");

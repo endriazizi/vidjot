@@ -1,10 +1,14 @@
-<h1>Ideas</h1>
+<h1>MDS</h1>
 {{#each ideas}}
 <div class="card card-body mb-2">
-    <p>{{mds_ticker}}</p>
+    <h1>{{mds_ticker}}</h1>
+    <p>{{mds_ts}}</p>
+    <div> <h6>M:</h6><p>{{m}}</p></div>
+    <div> <h6>T:</h6><p>{{t}}</p></div>
+
 </div>
 
 {{else}}
-    <p>Novideo ideas listed</p>
+    <p>No video ideas listed</p>
 
 {{/each}}

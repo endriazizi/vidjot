@@ -90,8 +90,10 @@ app.get('/about', (req, res) => {
 
 // Idea Index Page
 app.get('/ideas', (req, res)=>{
-    Idea.find({})
-    .sort({date:'desc'})
+    Idea.find({mds_ticker:"VIX"})
+    //aggiunta filtri
+    //.limit(10)
+    //.sort({date:'desc'})
     //promise
     .then(ideas =>{
          res.render('ideas/index', {
@@ -127,15 +129,19 @@ app.post('/ideas', (req, res) =>{
     if(errors.lenght > 0){
         res.render('ideas/add', {
             errors: errors,
-            title: req.body.mm,
-            details: req.body.mds_ticker
+            mds_ticker: req.body.mds_ticker,
+            mds_ts: req.body.mds_ts,
+            m: req.body.m,
+            t: req.body.t
         });
     } else {
 /*         res.send('passed');
         console.log(req.body); */
         const newUser = {
-            title: req.body.mm,
-            mds_ticker: req.body.mds_ticker
+            mds_ticker: req.body.mds_ticker,
+            mds_ts: req.body.mds_ts,
+            m: req.body.m,
+            t: req.body.t
           }
           new Idea(newUser)
             .save()
